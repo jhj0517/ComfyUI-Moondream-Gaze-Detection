@@ -1,0 +1,17 @@
+#  Edit the following fields to match your project
+
+[project]
+name = "comfyui-customnodes-template"
+description = "Template repository for custom nodes from [ComfyUI-CustomNodes-Template](https://github.com/jhj0517/ComfyUI-CustomNodes-Template)."
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = ["",]  # e.g.) ["numpy==1.18.1", ]
+
+[project.urls]
+Repository = "https://github.com/jhj0517/ComfyUI-CustomNodes-Template"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "jhj0517"
+DisplayName = "ComfyUI-CustomNodes-Template"
+Icon = ""
