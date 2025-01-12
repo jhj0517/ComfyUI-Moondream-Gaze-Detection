@@ -1,17 +1,15 @@
-#  Edit the following fields to match your project
-
 [project]
-name = "comfyui-customnodes-template"
-description = "Template repository for custom nodes from [ComfyUI-CustomNodes-Template](https://github.com/jhj0517/ComfyUI-CustomNodes-Template)."
+name = "comfyui-moondream-gaze-detection"
+description = "Moondream's gaze detection feature node from [ComfyUI-Moondream-Gaze-Detection](https://github.com/jhj0517/ComfyUI-Moondream-Gaze-Detection)."
 version = "1.0.0"
 license = {file = "LICENSE"}
-dependencies = ["",]  # e.g.) ["numpy==1.18.1", ]
+dependencies = ["matplotlib==3.10.0", "pyvips==2.2.3", "accelerate>=0.32.1"]
 
 [project.urls]
-Repository = "https://github.com/jhj0517/ComfyUI-CustomNodes-Template"
+Repository = "https://github.com/jhj0517/ComfyUI-Moondream-Gaze-Detection.git"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
 PublisherId = "jhj0517"
-DisplayName = "ComfyUI-CustomNodes-Template"
+DisplayName = "ComfyUI-Moondream-Gaze-Detection"
 Icon = ""
