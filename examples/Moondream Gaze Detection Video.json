@@ -1,6 +1,6 @@
 {
-  "last_node_id": 14,
-  "last_link_id": 11,
+  "last_node_id": 16,
+  "last_link_id": 13,
   "nodes": [
     {
       "id": 9,
@@ -58,52 +58,11 @@
       ]
     },
     {
-      "id": 12,
-      "type": "Gaze Detection Video",
-      "pos": [
-        375.0546569824219,
-        -323.3594970703125
-      ],
-      "size": [
-        252,
-        46
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MOONDREAM_MODEL",
-          "link": 7
-        },
-        {
-          "name": "video",
-          "type": "IMAGE",
-          "link": 11
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": [
-            10
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Gaze Detection Video"
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 14,
+      "id": 15,
       "type": "VHS_LoadVideo",
       "pos": [
-        -19.902482986450195,
-        -160.6429901123047
+        -9.19216251373291,
+        -176.97683715820312
       ],
       "size": [
         247.455078125,
@@ -131,7 +90,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            11
+            12
           ],
           "slot_index": 0
         },
@@ -178,15 +137,56 @@
       }
     },
     {
-      "id": 13,
+      "id": 12,
+      "type": "Gaze Detection Video",
+      "pos": [
+        375.0546569824219,
+        -323.3594970703125
+      ],
+      "size": [
+        252,
+        46
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MOONDREAM_MODEL",
+          "link": 7
+        },
+        {
+          "name": "video",
+          "type": "IMAGE",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            13
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Gaze Detection Video"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 16,
       "type": "VHS_VideoCombine",
       "pos": [
-        750.9871826171875,
-        -335.7166442871094
+        730.4083862304688,
+        -329.4408264160156
       ],
       "size": [
         214.7587890625,
-        238
+        334
       ],
       "flags": {},
       "order": 4,
@@ -195,7 +195,7 @@
         {
           "name": "images",
           "type": "IMAGE",
-          "link": 10
+          "link": 13
         },
         {
           "name": "audio",
@@ -230,7 +230,11 @@
         "frame_rate": 15,
         "loop_count": 0,
         "filename_prefix": "Moondream",
-        "format": "image/webp",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
         "pingpong": false,
         "save_output": true,
         "videopreview": {
@@ -252,19 +256,19 @@
       "MOONDREAM_MODEL"
     ],
     [
-      10,
       12,
-      0,
-      13,
-      0,
-      "IMAGE"
-    ],
-    [
-      11,
-      14,
+      15,
       0,
       12,
       1,
+      "IMAGE"
+    ],
+    [
+      13,
+      12,
+      0,
+      16,
+      0,
       "IMAGE"
     ]
   ],
@@ -272,10 +276,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.1804546736598291,
+      "scale": 0.8868930681140714,
       "offset": [
-        281.0130229294345,
-        592.7828069594939
+        852.139622152714,
+        600.9404160952256
       ]
     },
     "ue_links": [],
