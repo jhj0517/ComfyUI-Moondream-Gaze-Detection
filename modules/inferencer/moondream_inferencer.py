@@ -8,6 +8,7 @@ from PIL import Image
 from transformers import AutoModelForCausalLM
 from typing import (Union, Tuple, List, Dict, Optional, Any)
 import cv2
+import io
 
 from .pyvips_dll_handler import handle_pyvips_dll_error
 
@@ -183,6 +184,23 @@ class MoondreamInferencer:
         plt.subplots_adjust(left=0, right=1, bottom=0, top=1)
 
         return fig
+
+    @staticmethod
+    def figure_to_tensor(fig) -> torch.Tensor:
+        """
+        Converts a matplotlib Figure into a PyTorch tensor of shape.
+        """
+        buf = io.BytesIO()
+        fig.savefig(buf, format="png", bbox_inches="tight", pad_inches=0)
+        plt.close(fig)
+
+        buf.seek(0)
+        pil_img = Image.open(buf).convert("RGB")
+
+        np_img = np.array(pil_img, dtype=np.float32) / 255.0
+
+        tensor_img = torch.from_numpy(np_img).unsqueeze(0)
+        return tensor_img
 
 #
 # if __name__ == "__main__":
