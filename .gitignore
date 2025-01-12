@@ -1,5 +1,7 @@
 /.idea/
 /venv/
 /__pycache__/
+models/
 *.png
+*.jpg
 *.webp
