@@ -201,33 +201,3 @@ class MoondreamInferencer:
 
         tensor_img = torch.from_numpy(np_img).unsqueeze(0)
         return tensor_img
-
-#
-# if __name__ == "__main__":
-#
-#     matplotlib.use("Agg")
-#     handle_pyvips_dll_error(download_dir=os.path.join("."))
-#
-#     model = MoondreamInferencer(
-#         model_dir=os.path.join("models"),
-#     )
-#
-#     image_path = "face.jpg"
-#     image_bgr = cv2.imread(image_path)
-#     if image_bgr is None:
-#         print(f"Could not load image from {image_path}. Please check the path.")
-#     else:
-#         # Convert to RGB for consistency
-#         image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
-#
-#         # Call process_image
-#         fig, status = model.process_image(image_rgb, use_ensemble=False)
-#         print(status)
-#
-#         # Save the figure if one was returned
-#         if fig is not None:
-#             output_file = "visualization.png"
-#             fig.savefig(output_file)
-#             print(f"Visualization saved to {output_file}")
-#         else:
-#             print("No figure to save.")
