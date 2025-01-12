@@ -16,6 +16,7 @@ PYVIPS_WIN_DLL_URL = {
 def handle_pyvips_dll_error(download_dir: str):
     """Download Windows dll for pyvips and add the bin directory to the PATH."""
     pyvips_dll_dir = os.path.join(download_dir, "vips-dev-8.16")
+    os.makedirs(pyvips_dll_dir, exist_ok=True)
 
     if not os.path.exists or not os.listdir(pyvips_dll_dir):
         system = platform.system()
