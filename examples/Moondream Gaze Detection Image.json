@@ -1,6 +1,6 @@
 {
-  "last_node_id": 9,
-  "last_link_id": 3,
+  "last_node_id": 10,
+  "last_link_id": 4,
   "nodes": [
     {
       "id": 2,
@@ -25,7 +25,7 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 2
+          "link": 4
         }
       ],
       "outputs": [
@@ -44,71 +44,6 @@
       "widgets_values": []
     },
     {
-      "id": 6,
-      "type": "LoadImage",
-      "pos": [
-        -84.91741943359375,
-        -159.6101837158203
-      ],
-      "size": [
-        315,
-        314
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            2
-          ],
-          "slot_index": 0
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "face.jpg",
-        "image"
-      ]
-    },
-    {
-      "id": 7,
-      "type": "PreviewImage",
-      "pos": [
-        755.712646484375,
-        -296.9114074707031
-      ],
-      "size": [
-        464.81866455078125,
-        351.7847900390625
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 3
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": []
-    },
-    {
       "id": 1,
       "type": "(Down)Load Moondream Model",
       "pos": [
@@ -120,7 +55,7 @@
         58
       ],
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -152,7 +87,7 @@
         121.18170928955078
       ],
       "flags": {},
-      "order": 2,
+      "order": 1,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -162,6 +97,71 @@
       ],
       "color": "#432",
       "bgcolor": "#653"
+    },
+    {
+      "id": 7,
+      "type": "PreviewImage",
+      "pos": [
+        755.712646484375,
+        -296.9114074707031
+      ],
+      "size": [
+        464.81866455078125,
+        351.7847900390625
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 3
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 10,
+      "type": "LoadImage",
+      "pos": [
+        -93.58299255371094,
+        -203.1174774169922
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "00100.png",
+        "image"
+      ]
     }
   ],
   "links": [
@@ -174,19 +174,19 @@
       "MOONDREAM_MODEL"
     ],
     [
-      2,
-      6,
-      0,
-      2,
-      1,
-      "IMAGE"
-    ],
-    [
       3,
       2,
       0,
       7,
       0,
+      "IMAGE"
+    ],
+    [
+      4,
+      10,
+      0,
+      2,
+      1,
       "IMAGE"
     ]
   ],
@@ -194,10 +194,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.1804546736598276,
+      "scale": 1.0731406124180256,
       "offset": [
-        418.02145990704406,
-        573.8290642913063
+        575.3050735879768,
+        599.7906244265273
       ]
     },
     "ue_links": [],
