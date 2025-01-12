@@ -1,6 +1,7 @@
 #  Package Modules
 import os
 from typing import (Union, BinaryIO, Dict, List, Tuple, Optional, Any)
+import torch
 import time
 
 #  ComfyUI Modules
@@ -20,15 +21,6 @@ os.makedirs(custom_nodes_model_dir, exist_ok=True)
 
 def get_category_name():
     return "Moondream Gaze Detection"
-
-
-# total_steps = 5
-# comfy_pbar = ProgressBar(total_steps)
-# #  Then, update the progress.
-# for i in range(1, total_steps):
-#     time.sleep(1)
-#     comfy_pbar.update(
-#         i)  # Alternatively, you can use `comfy_pbar.update_absolute(value)` to update the progress with absolute value.
 
 
 class MoondreamModelLoader:
@@ -79,3 +71,43 @@ class GazeDetection:
 
         return (out_img, )
 
+
+class GazeDetectionVideo:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "model": ("MOONDREAM_MODEL", ),
+                "video": ("IMAGE", )
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("images",)
+    FUNCTION = "gaze_detection_video"
+    CATEGORY = get_category_name()
+
+    def gaze_detection_video(self,
+                             model: MoondreamInferencer,
+                             video: Any,
+                             ) -> Tuple[int]:
+        num_frames = video.shape[0]
+        height = video.shape[1]
+        width = video.shape[2]
+        channels = video.shape[3]
+
+        comfy_pbar = ProgressBar(num_frames)
+        out_frames = []
+        for f in range(num_frames):
+            frame_tensor = video[f]
+            fig, status = model.process_image(frame_tensor, use_ensemble=False)
+            out_img = model.figure_to_tensor(fig)
+
+            out_img = out_img.squeeze(0)
+            out_frames.append(out_img)
+
+            comfy_pbar.update(1)
+
+        out_frames_tensor = torch.stack(out_frames, dim=0)
+
+        return (out_frames_tensor, )

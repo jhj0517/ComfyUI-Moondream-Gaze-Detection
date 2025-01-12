@@ -5,6 +5,7 @@ from .nodes import *
 NODE_CLASS_MAPPINGS = {
     "(Down)Load Moondream Model": MoondreamModelLoader,
     "Gaze Detection": GazeDetection,
+    "Gaze Detection Video": GazeDetectionVideo
 }
 
 
