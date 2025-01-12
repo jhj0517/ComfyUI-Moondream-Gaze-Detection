@@ -1,6 +1,6 @@
 #  Package Modules
 import os
-from typing import (Union, BinaryIO, Dict, List, Tuple, Optional)
+from typing import (Union, BinaryIO, Dict, List, Tuple, Optional, Any)
 import time
 
 #  ComfyUI Modules
@@ -9,6 +9,7 @@ from comfy.utils import ProgressBar
 
 #  Your Modules
 from .modules.inferencer.moondream_inferencer import MoondreamInferencer
+from .modules.inferencer.pyvips_dll_handler import handle_pyvips_dll_error
 
 
 #  Basic practice to get paths from ComfyUI
@@ -47,7 +48,7 @@ class MoondreamModelLoader:
     def load_model(self,
                    device: str,
                    ) -> Tuple[MoondreamInferencer]:
-
+        handle_pyvips_dll_error(download_dir=custom_nodes_script_dir)
         model_inferencer = MoondreamInferencer(model_dir=custom_nodes_model_dir)
         model_inferencer.load_model(device=device)
 
@@ -60,12 +61,8 @@ class GazeDetection:
         return {
             "required": {
                 "model": ("MOONDREAM_MODEL", ),
+                "image": ("IMAGE", )
             },
-            #  Specify the parameters with type and default value.
-            "optional": {
-                "a": ("INT", {"default": 5}),
-                "b": ("INT", {"default": 10}),
-            }
         }
 
     RETURN_TYPES = ("IMAGE",)
@@ -75,8 +72,10 @@ class GazeDetection:
 
     def gaze_detection(self,
                        model: MoondreamInferencer,
-                       image: Optional[int],
+                       image: Any,
                        ) -> Tuple[int]:
         fig, status = model.process_image(image, use_ensemble=False)
-        return (fig, )
+        out_img = model.figure_to_tensor(fig)
+
+        return (out_img, )
 
