@@ -40,8 +40,16 @@ class MoondreamInferencer:
             return None, ""
 
         try:
-            if isinstance(input_image, np.ndarray):
+            if isinstance(input_image, torch.Tensor):
+                if input_image.dim() == 4 and input_image.shape[0] == 1:
+                    input_image = input_image[0]  # shape now (H, W, 3)
+                image_np = (input_image.cpu().numpy() * 255).astype(np.uint8)
+
+                pil_image = Image.fromarray(image_np).convert("RGB")
+
+            elif isinstance(input_image, np.ndarray):
                 pil_image = Image.fromarray(input_image)
+
             else:
                 pil_image = input_image
 
