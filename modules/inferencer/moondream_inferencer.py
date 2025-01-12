@@ -6,10 +6,10 @@ import matplotlib
 import PIL
 from PIL import Image
 from transformers import AutoModelForCausalLM
-from typing import (Union, Tuple, List, Dict, Optional)
+from typing import (Union, Tuple, List, Dict, Optional, Any)
 import cv2
 
-from pyvips_dll_handler import handle_pyvips_dll_error
+from .pyvips_dll_handler import handle_pyvips_dll_error
 
 
 class MoondreamInferencer:
@@ -30,7 +30,7 @@ class MoondreamInferencer:
 
     def process_image(
         self,
-        input_image: Union[np.ndarray, PIL.Image],
+        input_image: Union[np.ndarray, Any],
         use_ensemble: bool
     ):
         if self.model is None:
