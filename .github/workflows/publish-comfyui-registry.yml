@@ -3,9 +3,8 @@ on:
   workflow_dispatch:
   push:
     branches:
-      #  Uncomment the branches below to enable the workflow
-      # - main
-      # - master
+      - main
+      - master
     paths:
       - "pyproject.toml"
 
