@@ -62,6 +62,7 @@ class MoondreamInferencer:
                 flip_enc_image = None
 
             faces = self.model.detect(enc_image, "face")["objects"]
+            faces.sort(key=lambda x: (x["x_min"], x["y_min"]))
 
             if not faces:
                 return None, "No faces detected in the image."
