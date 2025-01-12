@@ -61,7 +61,7 @@ class GazeDetection:
     def gaze_detection(self,
                        model: MoondreamInferencer,
                        image: Any,
-                       ) -> Tuple[int]:
+                       ) -> Tuple:
         fig, status = model.process_image(image, use_ensemble=False)
         out_img = model.figure_to_tensor(fig)
 
@@ -86,7 +86,7 @@ class GazeDetectionVideo:
     def gaze_detection_video(self,
                              model: MoondreamInferencer,
                              video: Any,
-                             ) -> Tuple[int]:
+                             ) -> Tuple:
         num_frames = video.shape[0]
         height = video.shape[1]
         width = video.shape[2]
