@@ -1,19 +1,15 @@
-#  Package Modules
 import os
 from typing import (Union, BinaryIO, Dict, List, Tuple, Optional, Any)
 import torch
 import time
 
-#  ComfyUI Modules
 import folder_paths
 from comfy.utils import ProgressBar
 
-#  Your Modules
 from .modules.inferencer.moondream_inferencer import MoondreamInferencer
 from .modules.inferencer.pyvips_dll_handler import handle_pyvips_dll_error
 
 
-#  Basic practice to get paths from ComfyUI
 custom_nodes_script_dir = os.path.dirname(os.path.abspath(__file__))
 custom_nodes_model_dir = os.path.join(folder_paths.models_dir, "moondream")
 os.makedirs(custom_nodes_model_dir, exist_ok=True)
