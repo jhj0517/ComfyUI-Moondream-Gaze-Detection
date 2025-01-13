@@ -18,7 +18,7 @@ def handle_pyvips_dll_error(download_dir: str):
     pyvips_dll_dir = os.path.join(download_dir, "vips-dev-8.16")
     os.makedirs(pyvips_dll_dir, exist_ok=True)
 
-    if not os.path.exists or not os.listdir(pyvips_dll_dir):
+    if not os.path.exists(pyvips_dll_dir) or not os.listdir(pyvips_dll_dir):
         system = platform.system()
 
         if system.upper() == "WINDOWS":
