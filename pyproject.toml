@@ -1,9 +1,9 @@
 [project]
 name = "comfyui-moondream-gaze-detection"
-description = "Moondream's gaze detection feature node from [ComfyUI-Moondream-Gaze-Detection](https://github.com/jhj0517/ComfyUI-Moondream-Gaze-Detection)."
-version = "1.0.1"
+description = "Moondream's gaze detection feature wrapper node."
+version = "1.0.2"
 license = {file = "LICENSE"}
-dependencies = ["matplotlib==3.10.0", "pyvips==2.2.3", "accelerate>=0.32.1"]
+dependencies = ["matplotlib==3.10.0", "pyvips==2.2.3", "accelerate>=0.32.1", "opencv-python"]
 
 [project.urls]
 Repository = "https://github.com/jhj0517/ComfyUI-Moondream-Gaze-Detection.git"
