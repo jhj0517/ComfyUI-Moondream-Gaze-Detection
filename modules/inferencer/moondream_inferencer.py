@@ -64,41 +64,39 @@ class MoondreamInferencer:
             faces = self.model.detect(enc_image, "face")["objects"]
             faces.sort(key=lambda x: (x["x_min"], x["y_min"]))
 
-            if not faces:
-                return None, "No faces detected in the image."
-
             face_boxes = []
             gaze_points = []
 
-            for face in faces:
-                # Add face bounding box regardless of gaze detection
-                face_box = (
-                    face["x_min"] * pil_image.width,
-                    face["y_min"] * pil_image.height,
-                    (face["x_max"] - face["x_min"]) * pil_image.width,
-                    (face["y_max"] - face["y_min"]) * pil_image.height,
-                )
-                face_center = (
-                    (face["x_min"] + face["x_max"]) / 2,
-                    (face["y_min"] + face["y_max"]) / 2
-                )
-                face_boxes.append(face_box)
-
-                # Try to detect gaze
-                gaze_settings = {
-                    "prioritize_accuracy": use_ensemble,
-                    "flip_enc_img": flip_enc_image
-                }
-                gaze = self.model.detect_gaze(enc_image, face=face, eye=face_center, unstable_settings=gaze_settings)["gaze"]
-
-                if gaze is not None:
-                    gaze_point = (
-                        gaze["x"] * pil_image.width,
-                        gaze["y"] * pil_image.height,
+            if faces:
+                for face in faces:
+                    # Add face bounding box regardless of gaze detection
+                    face_box = (
+                        face["x_min"] * pil_image.width,
+                        face["y_min"] * pil_image.height,
+                        (face["x_max"] - face["x_min"]) * pil_image.width,
+                        (face["y_max"] - face["y_min"]) * pil_image.height,
                     )
-                    gaze_points.append(gaze_point)
-                else:
-                    gaze_points.append(None)
+                    face_center = (
+                        (face["x_min"] + face["x_max"]) / 2,
+                        (face["y_min"] + face["y_max"]) / 2
+                    )
+                    face_boxes.append(face_box)
+
+                    # Try to detect gaze
+                    gaze_settings = {
+                        "prioritize_accuracy": use_ensemble,
+                        "flip_enc_img": flip_enc_image
+                    }
+                    gaze = self.model.detect_gaze(enc_image, face=face, eye=face_center, unstable_settings=gaze_settings)["gaze"]
+
+                    if gaze is not None:
+                        gaze_point = (
+                            gaze["x"] * pil_image.width,
+                            gaze["y"] * pil_image.height,
+                        )
+                        gaze_points.append(gaze_point)
+                    else:
+                        gaze_points.append(None)
 
             # Create visualization
             image_array = np.array(pil_image)
