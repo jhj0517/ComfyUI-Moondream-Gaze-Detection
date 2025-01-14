@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-moondream-gaze-detection"
 description = "Moondream's gaze detection feature wrapper node."
-version = "1.0.2"
+version = "1.0.3"
 license = {file = "LICENSE"}
 dependencies = ["matplotlib==3.10.0", "pyvips==2.2.3", "accelerate>=0.32.1", "opencv-python"]
 
