@@ -49,11 +49,9 @@ class GazeDetection:
         return {
             "required": {
                 "model": ("MOONDREAM_MODEL", ),
-                "image": ("IMAGE", )
+                "image": ("IMAGE", ),
+                "use_ensemble": ("BOOLEAN", {"default": False}),
             },
-            "optional": {
-                "use_ensemble": ("bool", {"default": False}),
-            }
         }
 
     RETURN_TYPES = ("IMAGE",)
@@ -64,7 +62,7 @@ class GazeDetection:
     def gaze_detection(self,
                        model: MoondreamInferencer,
                        image: Any,
-                       use_ensemble: bool
+                       use_ensemble: bool,
                        ) -> Tuple:
         fig, status = model.process_image(image, use_ensemble=use_ensemble)
         out_img = model.figure_to_tensor(fig)
@@ -78,11 +76,9 @@ class GazeDetectionVideo:
         return {
             "required": {
                 "model": ("MOONDREAM_MODEL", ),
-                "video": ("IMAGE", )
+                "video": ("IMAGE", ),
+                "use_ensemble": ("BOOLEAN", {"default": False}),
             },
-            "optional": {
-                "use_ensemble": ("bool", {"default": False}),
-            }
         }
 
     RETURN_TYPES = ("IMAGE",)
@@ -93,7 +89,7 @@ class GazeDetectionVideo:
     def gaze_detection_video(self,
                              model: MoondreamInferencer,
                              video: Any,
-                             use_ensemble: bool
+                             use_ensemble: bool,
                              ) -> Tuple:
         num_frames = video.shape[0]
         height = video.shape[1]
