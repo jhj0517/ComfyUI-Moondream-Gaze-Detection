@@ -2,7 +2,11 @@
 
 This is the [ComfyUI](https://github.com/comfyanonymous/ComfyUI) custom node for [Moondream](https://github.com/vikhyat/moondream)'s [gaze detection feature](https://huggingface.co/spaces/moondream/gaze-demo).
 
-https://github.com/user-attachments/assets/cc2b59ee-ad53-4b0e-a3f4-6cc4c234bf7e
+
+
+https://github.com/user-attachments/assets/7b0d643b-ba7e-44df-a212-460e56d8c28a
+
+
 
 ## Installation
 
