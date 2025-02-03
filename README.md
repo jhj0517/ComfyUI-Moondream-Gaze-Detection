@@ -4,7 +4,9 @@ This is the [ComfyUI](https://github.com/comfyanonymous/ComfyUI) custom node for
 
 
 
-https://github.com/user-attachments/assets/7b0d643b-ba7e-44df-a212-460e56d8c28a
+
+https://github.com/user-attachments/assets/786bbbbf-f7a5-46ff-a880-2839dc1c9e2c
+
 
 
 
